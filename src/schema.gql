@@ -1,0 +1,229 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""Cursor for paging through collections"""
+scalar ConnectionCursor
+
+type Contributor {
+  cpf: String!
+  id: String!
+  name: String!
+}
+
+type ContributorAggregateGroupBy {
+  cpf: String
+  name: String
+}
+
+type ContributorConnection {
+  """Array of edges."""
+  edges: [ContributorEdge!]!
+
+  """Paging information"""
+  pageInfo: PageInfo!
+
+  """Fetch total count of records"""
+  totalCount: Int!
+}
+
+type ContributorCountAggregate {
+  cpf: Int
+  name: Int
+}
+
+input ContributorDeleteFilter {
+  and: [ContributorDeleteFilter!]
+  cpf: StringFieldComparison
+  name: StringFieldComparison
+  or: [ContributorDeleteFilter!]
+}
+
+type ContributorDeleteResponse {
+  cpf: String
+  id: String
+  name: String
+}
+
+type ContributorEdge {
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+
+  """The node containing the Contributor"""
+  node: Contributor!
+}
+
+input ContributorFilter {
+  and: [ContributorFilter!]
+  cpf: StringFieldComparison
+  name: StringFieldComparison
+  or: [ContributorFilter!]
+}
+
+type ContributorMaxAggregate {
+  cpf: String
+  name: String
+}
+
+type ContributorMinAggregate {
+  cpf: String
+  name: String
+}
+
+input ContributorSort {
+  direction: SortDirection!
+  field: ContributorSortFields!
+  nulls: SortNulls
+}
+
+enum ContributorSortFields {
+  cpf
+  name
+}
+
+input ContributorUpdateFilter {
+  and: [ContributorUpdateFilter!]
+  cpf: StringFieldComparison
+  name: StringFieldComparison
+  or: [ContributorUpdateFilter!]
+}
+
+input CreateContributorInput {
+  cpf: String!
+  name: String!
+}
+
+input CreateManyContributorsInput {
+  """Array of records to create"""
+  contributors: [CreateContributorInput!]!
+}
+
+input CreateOneContributorInput {
+  """The record to create"""
+  contributor: CreateContributorInput!
+}
+
+input CursorPaging {
+  """Paginate after opaque cursor"""
+  after: ConnectionCursor
+
+  """Paginate before opaque cursor"""
+  before: ConnectionCursor
+
+  """Paginate first"""
+  first: Int
+
+  """Paginate last"""
+  last: Int
+}
+
+input DeleteManyContributorsInput {
+  """Filter to find records to delete"""
+  filter: ContributorDeleteFilter!
+}
+
+type DeleteManyResponse {
+  """The number of records deleted."""
+  deletedCount: Int!
+}
+
+input DeleteOneContributorInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+type Mutation {
+  createManyContributors(input: CreateManyContributorsInput!): [Contributor!]!
+  createOneContributor(input: CreateOneContributorInput!): Contributor!
+  deleteManyContributors(input: DeleteManyContributorsInput!): DeleteManyResponse!
+  deleteOneContributor(input: DeleteOneContributorInput!): ContributorDeleteResponse!
+  updateManyContributors(input: UpdateManyContributorsInput!): UpdateManyResponse!
+  updateOneContributor(input: UpdateOneContributorInput!): Contributor!
+}
+
+type PageInfo {
+  """The cursor of the last returned record."""
+  endCursor: ConnectionCursor
+
+  """true if paging forward and there are more records."""
+  hasNextPage: Boolean
+
+  """true if paging backwards and there are more records."""
+  hasPreviousPage: Boolean
+
+  """The cursor of the first returned record."""
+  startCursor: ConnectionCursor
+}
+
+type Query {
+  contributor(
+    """The id of the record to find."""
+    id: ID!
+  ): Contributor
+  contributors(
+    """Specify to filter the records returned."""
+    filter: ContributorFilter = {}
+
+    """Limit or page results."""
+    paging: CursorPaging = {first: 10}
+
+    """Specify to sort results."""
+    sorting: [ContributorSort!] = []
+  ): ContributorConnection!
+}
+
+"""Sort Directions"""
+enum SortDirection {
+  ASC
+  DESC
+}
+
+"""Sort Nulls Options"""
+enum SortNulls {
+  NULLS_FIRST
+  NULLS_LAST
+}
+
+input StringFieldComparison {
+  eq: String
+  gt: String
+  gte: String
+  iLike: String
+  in: [String!]
+  is: Boolean
+  isNot: Boolean
+  like: String
+  lt: String
+  lte: String
+  neq: String
+  notILike: String
+  notIn: [String!]
+  notLike: String
+}
+
+input UpdateContributorInput {
+  cpf: String
+  id: String!
+  name: String
+}
+
+input UpdateManyContributorsInput {
+  """Filter used to find fields to update"""
+  filter: ContributorUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateContributorInput!
+}
+
+type UpdateManyResponse {
+  """The number of records updated."""
+  updatedCount: Int!
+}
+
+input UpdateOneContributorInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateContributorInput!
+}
