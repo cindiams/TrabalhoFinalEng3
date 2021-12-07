@@ -2,124 +2,190 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-"""Cursor for paging through collections"""
-scalar ConnectionCursor
-
-type Contributor {
+type Collaborator {
   cpf: String!
+  createAt: DateTime!
+  deleteAt: DateTime!
   id: String!
   name: String!
+  updateAt: DateTime!
 }
 
-type ContributorAggregateGroupBy {
+type CollaboratorAggregateGroupBy {
   cpf: String
+  createAt: DateTime
+  deleteAt: DateTime
+  id: String
   name: String
+  updateAt: DateTime
 }
 
-type ContributorConnection {
-  """Array of edges."""
-  edges: [ContributorEdge!]!
+type CollaboratorConnection {
+  """Array of nodes."""
+  nodes: [Collaborator!]!
 
   """Paging information"""
-  pageInfo: PageInfo!
+  pageInfo: OffsetPageInfo!
 
   """Fetch total count of records"""
   totalCount: Int!
 }
 
-type ContributorCountAggregate {
+type CollaboratorCountAggregate {
   cpf: Int
+  createAt: Int
+  deleteAt: Int
+  id: Int
   name: Int
+  updateAt: Int
 }
 
-input ContributorDeleteFilter {
-  and: [ContributorDeleteFilter!]
+input CollaboratorDeleteFilter {
+  and: [CollaboratorDeleteFilter!]
   cpf: StringFieldComparison
+  createAt: DateFieldComparison
+  deleteAt: DateFieldComparison
+  id: StringFieldComparison
   name: StringFieldComparison
-  or: [ContributorDeleteFilter!]
+  or: [CollaboratorDeleteFilter!]
+  updateAt: DateFieldComparison
 }
 
-type ContributorDeleteResponse {
+type CollaboratorDeleteResponse {
   cpf: String
+  createAt: DateTime
+  deleteAt: DateTime
   id: String
   name: String
+  updateAt: DateTime
 }
 
-type ContributorEdge {
-  """Cursor for this node."""
-  cursor: ConnectionCursor!
-
-  """The node containing the Contributor"""
-  node: Contributor!
-}
-
-input ContributorFilter {
-  and: [ContributorFilter!]
+input CollaboratorFilter {
+  and: [CollaboratorFilter!]
   cpf: StringFieldComparison
+  createAt: DateFieldComparison
+  deleteAt: DateFieldComparison
+  id: StringFieldComparison
   name: StringFieldComparison
-  or: [ContributorFilter!]
+  or: [CollaboratorFilter!]
+  updateAt: DateFieldComparison
 }
 
-type ContributorMaxAggregate {
+type CollaboratorMaxAggregate {
   cpf: String
+  createAt: DateTime
+  deleteAt: DateTime
+  id: String
   name: String
+  updateAt: DateTime
 }
 
-type ContributorMinAggregate {
+type CollaboratorMinAggregate {
   cpf: String
+  createAt: DateTime
+  deleteAt: DateTime
+  id: String
   name: String
+  updateAt: DateTime
 }
 
-input ContributorSort {
+input CollaboratorSort {
   direction: SortDirection!
-  field: ContributorSortFields!
+  field: CollaboratorSortFields!
   nulls: SortNulls
 }
 
-enum ContributorSortFields {
+enum CollaboratorSortFields {
   cpf
+  createAt
+  deleteAt
+  id
   name
+  updateAt
 }
 
-input ContributorUpdateFilter {
-  and: [ContributorUpdateFilter!]
+input CollaboratorUpdateFilter {
+  and: [CollaboratorUpdateFilter!]
   cpf: StringFieldComparison
+  createAt: DateFieldComparison
+  deleteAt: DateFieldComparison
+  id: StringFieldComparison
   name: StringFieldComparison
-  or: [ContributorUpdateFilter!]
+  or: [CollaboratorUpdateFilter!]
+  updateAt: DateFieldComparison
 }
 
-input CreateContributorInput {
+input CreateCollaboratorInput {
   cpf: String!
   name: String!
 }
 
-input CreateManyContributorsInput {
+input CreateManyCollaboratorsInput {
   """Array of records to create"""
-  contributors: [CreateContributorInput!]!
+  collaborators: [CreateCollaboratorInput!]!
 }
 
-input CreateOneContributorInput {
+input CreateManyServiceDTOSInput {
+  """Array of records to create"""
+  serviceDTOS: [CreateServiceInput!]!
+}
+
+input CreateManyTasksInput {
+  """Array of records to create"""
+  tasks: [CreateTaskInput!]!
+}
+
+input CreateOneCollaboratorInput {
   """The record to create"""
-  contributor: CreateContributorInput!
+  collaborator: CreateCollaboratorInput!
 }
 
-input CursorPaging {
-  """Paginate after opaque cursor"""
-  after: ConnectionCursor
-
-  """Paginate before opaque cursor"""
-  before: ConnectionCursor
-
-  """Paginate first"""
-  first: Int
-
-  """Paginate last"""
-  last: Int
+input CreateOneServiceDTOInput {
+  """The record to create"""
+  serviceDTO: CreateServiceInput!
 }
 
-input DeleteManyContributorsInput {
+input CreateOneTaskInput {
+  """The record to create"""
+  task: CreateTaskInput!
+}
+
+input CreateServiceInput {
+  name: String!
+}
+
+input CreateTaskInput {
+  name: String!
+}
+
+input DateFieldComparison {
+  between: DateFieldComparisonBetween
+  eq: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  is: Boolean
+  isNot: Boolean
+  lt: DateTime
+  lte: DateTime
+  neq: DateTime
+  notBetween: DateFieldComparisonBetween
+  notIn: [DateTime!]
+}
+
+input DateFieldComparisonBetween {
+  lower: DateTime!
+  upper: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input DeleteManyCollaboratorsInput {
   """Filter to find records to delete"""
-  filter: ContributorDeleteFilter!
+  filter: CollaboratorDeleteFilter!
 }
 
 type DeleteManyResponse {
@@ -127,49 +193,214 @@ type DeleteManyResponse {
   deletedCount: Int!
 }
 
-input DeleteOneContributorInput {
+input DeleteManyServiceDTOSInput {
+  """Filter to find records to delete"""
+  filter: ServiceDTODeleteFilter!
+}
+
+input DeleteManyTasksInput {
+  """Filter to find records to delete"""
+  filter: TaskDeleteFilter!
+}
+
+input DeleteOneCollaboratorInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneServiceDTOInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneTaskInput {
   """The id of the record to delete."""
   id: ID!
 }
 
 type Mutation {
-  createManyContributors(input: CreateManyContributorsInput!): [Contributor!]!
-  createOneContributor(input: CreateOneContributorInput!): Contributor!
-  deleteManyContributors(input: DeleteManyContributorsInput!): DeleteManyResponse!
-  deleteOneContributor(input: DeleteOneContributorInput!): ContributorDeleteResponse!
-  updateManyContributors(input: UpdateManyContributorsInput!): UpdateManyResponse!
-  updateOneContributor(input: UpdateOneContributorInput!): Contributor!
+  createManyCollaborators(input: CreateManyCollaboratorsInput!): [Collaborator!]!
+  createManyServiceDTOS(input: CreateManyServiceDTOSInput!): [ServiceDTO!]!
+  createManyTasks(input: CreateManyTasksInput!): [Task!]!
+  createOneCollaborator(input: CreateOneCollaboratorInput!): Collaborator!
+  createOneServiceDTO(input: CreateOneServiceDTOInput!): ServiceDTO!
+  createOneTask(input: CreateOneTaskInput!): Task!
+  deleteManyCollaborators(input: DeleteManyCollaboratorsInput!): DeleteManyResponse!
+  deleteManyServiceDTOS(input: DeleteManyServiceDTOSInput!): DeleteManyResponse!
+  deleteManyTasks(input: DeleteManyTasksInput!): DeleteManyResponse!
+  deleteOneCollaborator(input: DeleteOneCollaboratorInput!): CollaboratorDeleteResponse!
+  deleteOneServiceDTO(input: DeleteOneServiceDTOInput!): ServiceDTODeleteResponse!
+  deleteOneTask(input: DeleteOneTaskInput!): TaskDeleteResponse!
+  updateManyCollaborators(input: UpdateManyCollaboratorsInput!): UpdateManyResponse!
+  updateManyServiceDTOS(input: UpdateManyServiceDTOSInput!): UpdateManyResponse!
+  updateManyTasks(input: UpdateManyTasksInput!): UpdateManyResponse!
+  updateOneCollaborator(input: UpdateOneCollaboratorInput!): Collaborator!
+  updateOneServiceDTO(input: UpdateOneServiceDTOInput!): ServiceDTO!
+  updateOneTask(input: UpdateOneTaskInput!): Task!
 }
 
-type PageInfo {
-  """The cursor of the last returned record."""
-  endCursor: ConnectionCursor
-
+type OffsetPageInfo {
   """true if paging forward and there are more records."""
   hasNextPage: Boolean
 
   """true if paging backwards and there are more records."""
   hasPreviousPage: Boolean
+}
 
-  """The cursor of the first returned record."""
-  startCursor: ConnectionCursor
+input OffsetPaging {
+  """Limit the number of records returned"""
+  limit: Int
+
+  """Offset to start returning records from"""
+  offset: Int
 }
 
 type Query {
-  contributor(
+  collaborator(
     """The id of the record to find."""
     id: ID!
-  ): Contributor
-  contributors(
+  ): Collaborator
+  collaborators(
     """Specify to filter the records returned."""
-    filter: ContributorFilter = {}
+    filter: CollaboratorFilter = {}
 
     """Limit or page results."""
-    paging: CursorPaging = {first: 10}
+    paging: OffsetPaging = {limit: 10}
 
     """Specify to sort results."""
-    sorting: [ContributorSort!] = []
-  ): ContributorConnection!
+    sorting: [CollaboratorSort!] = []
+  ): CollaboratorConnection!
+  serviceDTO(
+    """The id of the record to find."""
+    id: ID!
+  ): ServiceDTO
+  serviceDTOS(
+    """Specify to filter the records returned."""
+    filter: ServiceDTOFilter = {}
+
+    """Limit or page results."""
+    paging: OffsetPaging = {limit: 10}
+
+    """Specify to sort results."""
+    sorting: [ServiceDTOSort!] = []
+  ): ServiceDTOConnection!
+  task(
+    """The id of the record to find."""
+    id: ID!
+  ): Task
+  tasks(
+    """Specify to filter the records returned."""
+    filter: TaskFilter = {}
+
+    """Limit or page results."""
+    paging: OffsetPaging = {limit: 10}
+
+    """Specify to sort results."""
+    sorting: [TaskSort!] = []
+  ): TaskConnection!
+}
+
+type ServiceDTO {
+  createAt: DateTime!
+  deleteAt: DateTime!
+  id: String!
+  name: String!
+  updateAt: DateTime!
+}
+
+type ServiceDTOAggregateGroupBy {
+  createAt: DateTime
+  deleteAt: DateTime
+  id: String
+  name: String
+  updateAt: DateTime
+}
+
+type ServiceDTOConnection {
+  """Array of nodes."""
+  nodes: [ServiceDTO!]!
+
+  """Paging information"""
+  pageInfo: OffsetPageInfo!
+
+  """Fetch total count of records"""
+  totalCount: Int!
+}
+
+type ServiceDTOCountAggregate {
+  createAt: Int
+  deleteAt: Int
+  id: Int
+  name: Int
+  updateAt: Int
+}
+
+input ServiceDTODeleteFilter {
+  and: [ServiceDTODeleteFilter!]
+  createAt: DateFieldComparison
+  deleteAt: DateFieldComparison
+  id: StringFieldComparison
+  name: StringFieldComparison
+  or: [ServiceDTODeleteFilter!]
+  updateAt: DateFieldComparison
+}
+
+type ServiceDTODeleteResponse {
+  createAt: DateTime
+  deleteAt: DateTime
+  id: String
+  name: String
+  updateAt: DateTime
+}
+
+input ServiceDTOFilter {
+  and: [ServiceDTOFilter!]
+  createAt: DateFieldComparison
+  deleteAt: DateFieldComparison
+  id: StringFieldComparison
+  name: StringFieldComparison
+  or: [ServiceDTOFilter!]
+  updateAt: DateFieldComparison
+}
+
+type ServiceDTOMaxAggregate {
+  createAt: DateTime
+  deleteAt: DateTime
+  id: String
+  name: String
+  updateAt: DateTime
+}
+
+type ServiceDTOMinAggregate {
+  createAt: DateTime
+  deleteAt: DateTime
+  id: String
+  name: String
+  updateAt: DateTime
+}
+
+input ServiceDTOSort {
+  direction: SortDirection!
+  field: ServiceDTOSortFields!
+  nulls: SortNulls
+}
+
+enum ServiceDTOSortFields {
+  createAt
+  deleteAt
+  id
+  name
+  updateAt
+}
+
+input ServiceDTOUpdateFilter {
+  and: [ServiceDTOUpdateFilter!]
+  createAt: DateFieldComparison
+  deleteAt: DateFieldComparison
+  id: StringFieldComparison
+  name: StringFieldComparison
+  or: [ServiceDTOUpdateFilter!]
+  updateAt: DateFieldComparison
 }
 
 """Sort Directions"""
@@ -201,18 +432,121 @@ input StringFieldComparison {
   notLike: String
 }
 
-input UpdateContributorInput {
+type Task {
+  createAt: DateTime!
+  deleteAt: DateTime!
+  id: String!
+  name: String!
+  updateAt: DateTime!
+}
+
+type TaskAggregateGroupBy {
+  createAt: DateTime
+  deleteAt: DateTime
+  id: String
+  name: String
+  updateAt: DateTime
+}
+
+type TaskConnection {
+  """Array of nodes."""
+  nodes: [Task!]!
+
+  """Paging information"""
+  pageInfo: OffsetPageInfo!
+
+  """Fetch total count of records"""
+  totalCount: Int!
+}
+
+type TaskCountAggregate {
+  createAt: Int
+  deleteAt: Int
+  id: Int
+  name: Int
+  updateAt: Int
+}
+
+input TaskDeleteFilter {
+  and: [TaskDeleteFilter!]
+  createAt: DateFieldComparison
+  deleteAt: DateFieldComparison
+  id: StringFieldComparison
+  name: StringFieldComparison
+  or: [TaskDeleteFilter!]
+  updateAt: DateFieldComparison
+}
+
+type TaskDeleteResponse {
+  createAt: DateTime
+  deleteAt: DateTime
+  id: String
+  name: String
+  updateAt: DateTime
+}
+
+input TaskFilter {
+  and: [TaskFilter!]
+  createAt: DateFieldComparison
+  deleteAt: DateFieldComparison
+  id: StringFieldComparison
+  name: StringFieldComparison
+  or: [TaskFilter!]
+  updateAt: DateFieldComparison
+}
+
+type TaskMaxAggregate {
+  createAt: DateTime
+  deleteAt: DateTime
+  id: String
+  name: String
+  updateAt: DateTime
+}
+
+type TaskMinAggregate {
+  createAt: DateTime
+  deleteAt: DateTime
+  id: String
+  name: String
+  updateAt: DateTime
+}
+
+input TaskSort {
+  direction: SortDirection!
+  field: TaskSortFields!
+  nulls: SortNulls
+}
+
+enum TaskSortFields {
+  createAt
+  deleteAt
+  id
+  name
+  updateAt
+}
+
+input TaskUpdateFilter {
+  and: [TaskUpdateFilter!]
+  createAt: DateFieldComparison
+  deleteAt: DateFieldComparison
+  id: StringFieldComparison
+  name: StringFieldComparison
+  or: [TaskUpdateFilter!]
+  updateAt: DateFieldComparison
+}
+
+input UpdateCollaboratorInput {
   cpf: String
   id: String!
   name: String
 }
 
-input UpdateManyContributorsInput {
+input UpdateManyCollaboratorsInput {
   """Filter used to find fields to update"""
-  filter: ContributorUpdateFilter!
+  filter: CollaboratorUpdateFilter!
 
   """The update to apply to all records found using the filter"""
-  update: UpdateContributorInput!
+  update: UpdateCollaboratorInput!
 }
 
 type UpdateManyResponse {
@@ -220,10 +554,52 @@ type UpdateManyResponse {
   updatedCount: Int!
 }
 
-input UpdateOneContributorInput {
+input UpdateManyServiceDTOSInput {
+  """Filter used to find fields to update"""
+  filter: ServiceDTOUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateServiceInput!
+}
+
+input UpdateManyTasksInput {
+  """Filter used to find fields to update"""
+  filter: TaskUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateTaskInput!
+}
+
+input UpdateOneCollaboratorInput {
   """The id of the record to update"""
   id: ID!
 
   """The update to apply."""
-  update: UpdateContributorInput!
+  update: UpdateCollaboratorInput!
+}
+
+input UpdateOneServiceDTOInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateServiceInput!
+}
+
+input UpdateOneTaskInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateTaskInput!
+}
+
+input UpdateServiceInput {
+  id: ID
+  name: String
+}
+
+input UpdateTaskInput {
+  id: ID
+  name: String
 }

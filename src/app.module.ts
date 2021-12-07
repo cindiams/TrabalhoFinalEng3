@@ -3,16 +3,25 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { AppService } from './app.service';
-import { ContributorsModule } from './modules/contributors/contributors.module';
+import { CollaboratorsModule } from './modules/collaborators/collaborators.module';
+import { TasksModule } from './modules/tasks/tasks.module';
+import { ServicesModule } from './modules/services/services.module';
 
 @Module({
   imports: [
+    TypeOrmModule.forRoot(),
     GraphQLModule.forRoot({
+      debug:false,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,      
     }),
-    TypeOrmModule.forRoot(),
-    ContributorsModule,
+    
+    CollaboratorsModule,
+    
+    TasksModule,
+    
+    ServicesModule,
+    
   ],
   providers: [AppService],
 })

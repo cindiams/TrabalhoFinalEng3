@@ -1,7 +1,7 @@
 import { Field, InputType} from '@nestjs/graphql';
 
 @InputType()
-export class CreateContributorInput {
+export class CreateCollaboratorInput {
   @Field()
   name: string;
 
